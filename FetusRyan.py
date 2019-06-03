@@ -6,19 +6,23 @@ import speech_recognition as sr
 
 
 class Weather:
+    print("This is Weather class.")
 
 
 
 class StockMarket:
+    print("This is StockMarket class.")
 
 
 
 class RouteFinder:
+    print("This is RouteFinder class.")
 
 
 
 class News:
-    
+    print("This is News class.")
+
 
 
 
