@@ -5,6 +5,23 @@
 import speech_recognition as sr
 
 
+class Weather:
+
+
+
+class StockMarket:
+
+
+
+class RouteFinder:
+
+
+
+class News:
+    
+
+
+
 # Get audio input (sample)
 
 r=sr.Recognizer()
