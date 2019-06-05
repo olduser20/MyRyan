@@ -6,22 +6,28 @@ import speech_recognition as sr
 
 
 class Weather:
-    print("This is Weather class.")
+    def Message():
+        print("This is Weather class.")
 
 
 
 class StockMarket:
-    print("This is StockMarket class.")
+    def Message():
+        print("This is StockMarket class.")
 
 
 
 class RouteFinder:
-    print("This is RouteFinder class.")
+    def Message():
+        print("This is RouteFinder class.")
 
 
 
 class News:
-    print("This is News class.")
+    def Message():
+        print("This is News class.")
+
+    
 
 
 
@@ -46,11 +52,15 @@ with sr.Microphone() as source:
 
 # Using Google speech recognition
 try:
-    print("Google Speech Recognition thinks you said "+r.recognize_google(audio))
+    command=r.recognize_google(audio)
+    print("Google Speech Recognition thinks you said "+command)
 except  sr.UnknownValueError:
     print("Google Speech Recognition could not understand audio")
 except sr.RequestError as e:
     print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-
+if (command=="weather"):
+    print("Call the Weather class.")
+elif (command=="stock market"):
+    print("Call the StockMarket class.")
 
