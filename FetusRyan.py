@@ -6,25 +6,25 @@ import speech_recognition as sr
 
 
 class Weather:
-    def Message():
+    def Message(self):
         print("This is Weather class.")
 
 
 
 class StockMarket:
-    def Message():
+    def Message(self):
         print("This is StockMarket class.")
 
 
 
 class RouteFinder:
-    def Message():
+    def Message(self):
         print("This is RouteFinder class.")
 
 
 
 class News:
-    def Message():
+    def Message(self):
         print("This is News class.")
 
     
