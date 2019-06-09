@@ -6,7 +6,8 @@ import speech_recognition as sr
 
 
 class Weather:
-    def Message(self):
+    @staticmethod
+    def Message():
         print("This is Weather class.")
 
 
@@ -27,7 +28,7 @@ class News:
     def Message(self):
         print("This is News class.")
 
-    
+
 
 
 
@@ -60,6 +61,7 @@ try:
 
     if (command=="weather"):
         print("Call the Weather class.")
+        
     elif (command=="stock market"):
         print("Call the StockMarket class.")
 
@@ -70,6 +72,7 @@ except OSError:
     strMode=input("Do you want to load the written mode [y/n]? ")
     if strMode=="y" or strMode=="Y":
         print("Written mode activated.")
+        Weather.Message()
     elif strMode=="n" or strMode=="N":
         print("Closing the program...")
     else:
