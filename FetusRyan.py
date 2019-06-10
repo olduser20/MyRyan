@@ -6,12 +6,15 @@ import speech_recognition as sr
 import openweather
 from datetime import datetime
 import requests, json
+import pyttsx3
+
 
 
 class Weather:
     @staticmethod
     def Message():
         print("This is Weather class.")
+        Speech.ReadText("This is weather class.")
 
     @staticmethod
     def GetLocation():
@@ -78,6 +81,10 @@ class Weather:
             # to the "description" key at  
             # the 0th index of z 
             weather_description = z[0]["description"] 
+
+            engine = pyttsx3.init()
+            engine.say("This is the weather condition for "+city_name)
+            engine.runAndWait()
         
             # print following values 
             print(" Country = " +
@@ -124,6 +131,12 @@ class News:
         print("This is News class.")
 
 
+class Speech:
+    @staticmethod
+    def ReadText(text):
+        print("Wait please...")
+
+
 class Walkthrough:
     @staticmethod
     def SelectTask(command):
@@ -145,7 +158,7 @@ class Walkthrough:
         strMode=input("Do you want to activate the typing mode [y/n]? ")
         if strMode=="y" or strMode=="Y":
             print("Typing mode activated.")
-            Weather.Message()
+            Walkthrough.GetTypingCommand()
         elif strMode=="n" or strMode=="N":
             print("Closing the program...")
         else:
@@ -208,8 +221,12 @@ try:
 
 except OSError:
     print("No microphone device is detected!")
+    # engine = pyttsx3.init()
+    # engine.say("This is Ryan.")
+    # engine.runAndWait()
     Walkthrough.SelectTypingMode()
-    Walkthrough.GetTypingCommand()
+    
+
 
 
     
