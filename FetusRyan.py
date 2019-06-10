@@ -7,7 +7,7 @@ import openweather
 from datetime import datetime
 import requests, json
 import pyttsx3
-
+import math
 
 
 class Weather:
@@ -63,7 +63,7 @@ class Weather:
         
             # store the value corresponding 
             # to the "temp" key of y 
-            current_temperature = y["temp"] 
+            current_temperature = int(y["temp"]-273.15)  
         
             # store the value corresponding 
             # to the "pressure" key of y 
@@ -89,7 +89,7 @@ class Weather:
             # print following values 
             print(" Country = " +
                             str(country) +
-                "\n Temperature (in kelvin unit) = " +
+                "\n Temperature (in Celsius unit) = " +
                             str(current_temperature) + 
                 "\n atmospheric pressure (in hPa unit) = " +
                             str(current_pressure) +
