@@ -45,10 +45,18 @@ class Weather:
         # "404", means city is found otherwise, 
         # city is not found 
         if x["cod"] != "404": 
-        
+            
+            # store the value of "sys" 
+            # key in variable s 
+            s = x["sys"] 
+
+            # store the value corresponding 
+            # to the "country" key of s 
+            country = s["country"] 
+
             # store the value of "main" 
             # key in variable y 
-            y = x["main"] 
+            y = x["main"]             
         
             # store the value corresponding 
             # to the "temp" key of y 
@@ -72,7 +80,9 @@ class Weather:
             weather_description = z[0]["description"] 
         
             # print following values 
-            print(" Temperature (in kelvin unit) = " +
+            print(" Country = " +
+                            str(country) +
+                "\n Temperature (in kelvin unit) = " +
                             str(current_temperature) + 
                 "\n atmospheric pressure (in hPa unit) = " +
                             str(current_pressure) +
@@ -87,6 +97,8 @@ class Weather:
         else: 
             print(" City Not Found ")
         
+
+        Walkthrough.TaskDone()
 
         
 
