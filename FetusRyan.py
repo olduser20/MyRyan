@@ -83,7 +83,7 @@ class Weather:
             weather_description = z[0]["description"] 
 
             engine = pyttsx3.init()
-            engine.say("This is the weather condition for "+city_name)
+            engine.say("This is the weather condition for {0}".format(city_name))
             engine.runAndWait()
         
             # print following values 
@@ -184,10 +184,6 @@ class Walkthrough:
             Walkthrough.GetTypingCommand()
         
         
-
-
-
-
 
 
 # Get audio input (sample)
