@@ -13,20 +13,49 @@ class Weather:
 
 
 class StockMarket:
-    def Message(self):
+    @staticmethod
+    def Message():
         print("This is StockMarket class.")
 
 
 
 class RouteFinder:
-    def Message(self):
+    @staticmethod
+    def Message():
         print("This is RouteFinder class.")
 
 
 
 class News:
-    def Message(self):
+    @staticmethod
+    def Message():
         print("This is News class.")
+
+
+class Walkthorough:
+    @staticmethod
+    def SelectTask(command):
+        if command==('weather'):
+            Weather.Message()
+        elif command==('stock market'):
+            StockMarket.Message()
+        elif command==('route finder'):
+            RouteFinder.Message()
+        elif command==('news'):
+            News.Message()
+        else:
+            print("I don't know how to do it yet! :(")
+
+    @staticmethod
+    def SelectTypingMode():
+        strMode=input("Do you want to activate the typing mode [y/n]? ")
+        if strMode=="y" or strMode=="Y":
+            print("Typing mode activated.")
+            Weather.Message()
+        elif strMode=="n" or strMode=="N":
+            print("Closing the program...")
+        else:
+            print("Wrong input!")
 
 
 
@@ -59,24 +88,14 @@ try:
     except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-    if (command=="weather"):
-        print("Call the Weather class.")
-        
-    elif (command=="stock market"):
-        print("Call the StockMarket class.")
+    Walkthorough.SelectTask(command)
 
 
 except OSError:
     print("No microphone device is detected!")
-    # print("Do you want to use the written mode?")
-    strMode=input("Do you want to load the written mode [y/n]? ")
-    if strMode=="y" or strMode=="Y":
-        print("Written mode activated.")
-        Weather.Message()
-    elif strMode=="n" or strMode=="N":
-        print("Closing the program...")
-    else:
-        print("Wrong input!")
+    Walkthorough.SelectTypingMode()
+
+    
 
 
 
