@@ -8,6 +8,14 @@ from datetime import datetime
 import requests, json
 import pyttsx3
 import math
+import iexfinance
+from iexfinance.stocks import get_historical_data
+
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+
+
 
 
 class Weather:
@@ -87,11 +95,11 @@ class Weather:
             # engine.say("This is the weather condition for {0}".format(city_name))
             # engine.runAndWait()
         
-            # print following values 
+            # print following values
             print(" Country = " +
                             str(country) +
                 "\n Temperature (in Celsius unit) = " +
-                            str(current_temperature) + 
+                            str(current_temperature) +
                 "\n atmospheric pressure (in hPa unit) = " +
                             str(current_pressure) +
                 "\n humidity (in percentage) = " +
@@ -116,6 +124,19 @@ class StockMarket:
     @staticmethod
     def Message():
         print("This is StockMarket class.")
+        
+    @staticmethod
+    def plotHistoricalData():
+        start=datetime(2018,1,1)
+        end=datetime(2019,1,1)
+
+        df=get_historical_data("TSLA",start,end,output_format='pandas',token='sk_1dd5739d86f64fc387146df87ab22837')
+
+        df.plot()
+        plt.show()
+
+
+
 
 
 
@@ -146,6 +167,7 @@ class Walkthrough:
             Weather.GetLocation()
         elif command=='stock market' or command=='2':
             StockMarket.Message()
+            StockMarket.plotHistoricalData()
         elif command=='route finder' or command=='3':
             RouteFinder.Message()
         elif command=='news' or command=='4':
@@ -164,6 +186,7 @@ class Walkthrough:
             print("Closing the program...")
         else:
             print("Wrong input!")
+
 
 
     @staticmethod
@@ -189,6 +212,11 @@ class Walkthrough:
 
 # Get audio input (sample)
 try:
+    # engine = pyttsx3.init()
+    # engine.say("This is Ryan.")
+    # engine.runAndWait()
+
+
     r=sr.Recognizer()
 
     with sr.Microphone() as source:
