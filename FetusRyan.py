@@ -9,12 +9,16 @@ import requests, json
 import pyttsx3
 import math
 import iexfinance
-from iexfinance.stocks import get_historical_data
+
 
 import matplotlib.pyplot as plt
 from datetime import datetime
 
 
+##### API KEYS #####
+
+stock_api_key='sk_1dd5739d86f64fc387146df87ab22837'
+weather_api_key = "2a7e2e367325658696e865497fd6aaea"
 
 
 
@@ -28,8 +32,7 @@ class Weather:
     def GetLocation():
         #strLocation=str(input("Please enter the location (country, city, town, ...): "))
 
-        # Enter your API key here 
-        api_key = "2a7e2e367325658696e865497fd6aaea"
+        
         
         # base_url variable to store url 
         base_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -39,7 +42,7 @@ class Weather:
         
         # complete_url variable to store 
         # complete url address 
-        complete_url = base_url + "appid=" + api_key + "&q=" + city_name 
+        complete_url = base_url + "appid=" + weather_api_key + "&q=" + city_name 
         # print(complete_url)
         
         # get method of requests module 
@@ -121,22 +124,75 @@ class Weather:
 
 
 class StockMarket:
+
+    
+
     @staticmethod
     def Message():
         print("This is StockMarket class.")
         
     @staticmethod
     def plotHistoricalData():
+
+        from iexfinance.stocks import get_historical_data
+
         start=datetime(2018,1,1)
         end=datetime(2019,1,1)
 
-        df=get_historical_data("TSLA",start,end,output_format='pandas',token='sk_1dd5739d86f64fc387146df87ab22837')
+        symbol=input("Enter symbol: ")
+        try:
+            df=get_historical_data(symbol,start,end,output_format='pandas',token=stock_api_key)
 
-        df.plot()
-        plt.show()
+            df.plot()
+            plt.show()
+
+        except:
+            print("Symbol not found!")
+
+
+    @staticmethod
+    def getBalanceSheet():
+        from iexfinance.stocks import Stock
+
+        symbol=input("Enter symbol: ")
+
+        try:
+            stck=Stock(symbol,output_format='pandas',token=stock_api_key)
+            print(stck.get_balance_sheet())
+            
+        except:
+            print("Symbol not found!")
+
+
+     
 
 
 
+    @staticmethod
+    def getIncomeStatement():
+        from iexfinance.stocks import Stock
+
+        symbol=input("Enter symbol: ")
+
+        try:
+            stck=Stock(symbol,output_format='pandas',token=stock_api_key)
+            print(stck.get_income_statement())
+            
+        except:
+            print("Symbol not found!")
+
+
+
+    @staticmethod
+    def getCashFlow():
+        print(1)
+
+
+
+
+    @staticmethod
+    def SymbolForecasting():
+        print(1)
 
 
 
@@ -167,7 +223,9 @@ class Walkthrough:
             Weather.GetLocation()
         elif command=='stock market' or command=='2':
             StockMarket.Message()
-            StockMarket.plotHistoricalData()
+            # StockMarket.plotHistoricalData()
+            StockMarket.getBalanceSheet()
+            StockMarket.getIncomeStatement()
         elif command=='route finder' or command=='3':
             RouteFinder.Message()
         elif command=='news' or command=='4':
