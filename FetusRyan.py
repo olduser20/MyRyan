@@ -139,7 +139,7 @@ class StockMarket:
         start=datetime(2018,1,1)
         end=datetime(2019,1,1)
 
-        symbol=input("Enter symbol: ")
+        symbol=input("Reporting Historical Data; Enter symbol: ")
         try:
             df=get_historical_data(symbol,start,end,output_format='pandas',token=stock_api_key)
 
@@ -154,7 +154,7 @@ class StockMarket:
     def getBalanceSheet():
         from iexfinance.stocks import Stock
 
-        symbol=input("Enter symbol: ")
+        symbol=input("Reporting Balance Sheet; Enter symbol: ")
 
         try:
             stck=Stock(symbol,output_format='pandas',token=stock_api_key)
@@ -172,7 +172,7 @@ class StockMarket:
     def getIncomeStatement():
         from iexfinance.stocks import Stock
 
-        symbol=input("Enter symbol: ")
+        symbol=input("Reprting Income Statement; Enter symbol: ")
 
         try:
             stck=Stock(symbol,output_format='pandas',token=stock_api_key)
@@ -224,8 +224,9 @@ class Walkthrough:
         elif command=='stock market' or command=='2':
             StockMarket.Message()
             # StockMarket.plotHistoricalData()
-            StockMarket.getBalanceSheet()
+            #StockMarket.getBalanceSheet()
             StockMarket.getIncomeStatement()
+            Walkthrough.TaskDone()
         elif command=='route finder' or command=='3':
             RouteFinder.Message()
         elif command=='news' or command=='4':
