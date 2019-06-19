@@ -209,6 +209,12 @@ class News:
         print("This is News class.")
 
 
+class Flights:
+    @staticmethod
+    def Message():
+        print("This is Flights class.")
+
+
 class Speech:
     @staticmethod
     def ReadText(text):
