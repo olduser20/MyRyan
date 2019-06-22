@@ -118,7 +118,7 @@ class Weather:
             Weather.GetLocation()
         
 
-        Walkthrough.TaskDone()
+        # Walkthrough.TaskDone()
 
 
 
@@ -227,16 +227,28 @@ class Walkthrough:
         if command=='weather' or command=='1':
             Weather.Message()
             Weather.GetLocation()
+
+            Walkthrough.TaskDone()
+
         elif command=='stock market' or command=='2':
             StockMarket.Message()
-            # StockMarket.plotHistoricalData()
+            StockMarket.plotHistoricalData()
             #StockMarket.getBalanceSheet()
-            StockMarket.getIncomeStatement()
+            # StockMarket.getIncomeStatement()
             Walkthrough.TaskDone()
+
         elif command=='route finder' or command=='3':
             RouteFinder.Message()
+            Walkthrough.TaskDone()
+
         elif command=='news' or command=='4':
             News.Message()
+            Walkthrough.TaskDone()
+
+        elif command=='flights' or command=='5':
+            Flights.Message()
+            Walkthrough.TaskDone()
+
         else:
             print("I don't know how to do it yet! :(")
             Walkthrough.TaskDone()
@@ -261,6 +273,7 @@ class Walkthrough:
         print("[2] Stock Market\n")
         print("[3] Route Finder\n")
         print("[4] News\n")
+        print("[5] Flights\n")
         strCommand=str(input("Please select task: "))
         Walkthrough.SelectTask(strCommand)
 
