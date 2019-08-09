@@ -314,12 +314,13 @@ try:
     try:
         command=r.recognize_google(audio)
         print("Google Speech Recognition thinks you said "+command)
+        Walkthrough.SelectTask(command)
     except  sr.UnknownValueError:
         print("Google Speech Recognition could not understand audio")
     except sr.RequestError as e:
         print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
-    Walkthrough.SelectTask(command)
+    
 
 
 except OSError:
