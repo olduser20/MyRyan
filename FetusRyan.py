@@ -137,7 +137,8 @@ class StockMarket:
         from iexfinance.stocks import get_historical_data
 
         start=datetime(2018,1,1)
-        end=datetime(2019,1,1)
+        end=datetime.today()
+        
 
         symbol=input("Reporting Historical Data; Enter symbol: ")
         try:
